@@ -1,5 +1,8 @@
 --unique number of departures connections
 
+select *
+from prep_airports
+
 --unique number of arrival connections
 
 --how many flight were planned in total (departures & arrivals)
