@@ -1,5 +1,8 @@
 --In a table mart_route_stats.sql we want to see for each route over all time:
 
+select *
+from {{ref('prep_airports')}}
+
 --origin airport code
 --destination airport code
 --total flights on this route

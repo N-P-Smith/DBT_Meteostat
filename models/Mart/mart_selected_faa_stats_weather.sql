@@ -1,5 +1,8 @@
 --In a table mart_selected_faa_stats_weather.sql we want to see for each airport daily:
 
+select *
+from {{ref('prep_airports')}}
+
 --unique number of departures connections
 --unique number of arrival connections
 --how many flight were planned in total (departures & arrivals)
