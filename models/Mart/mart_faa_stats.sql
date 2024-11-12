@@ -1,7 +1,7 @@
 --unique number of departures connections
 
 select *
-from prep_airports
+from {{ref('prep_airports')}}
 
 --unique number of arrival connections
 
