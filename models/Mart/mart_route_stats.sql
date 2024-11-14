@@ -156,13 +156,33 @@ with airport_details as
     from prep_airports),
 departure_details as
     (select
-        origin,
-        dep_time,
-        origin,
-        arr_time,
-        dest,
-        count(*),
-from prep_flights
-left
+        pf.flight_date,
+        pf.dep_time,
+        pf.origin,
+        ad.name,
+        ad.city,
+        ad.country,
+        count(*)
+    from prep_flights pf
+    join airport_details ad
+    on pf.origin = ad.faa),
+arrival_details as
+    (select
+        pf.flight_date,
+        pf.dep_time,
+        pf.dest,
+        ad.name,
+        ad.city,
+        ad.country,
+        count(*)
+    from prep_flights pf
+    join airport_details ad
+    on pf.dest = ad.faa)
+select
+    dep.*,
+    arr.*
+from departure_details dep
+join arrival_details arr
+on dep.flight_date = arr.flight_date, dep.dep_time = arr.dep_time
 group by origin, dest
 order by flight_date, dep_time, origin;
