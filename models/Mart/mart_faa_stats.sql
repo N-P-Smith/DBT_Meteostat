@@ -73,7 +73,7 @@ select
 	count(sched_dep_time) as dep_planned,
 	sum(cancelled) as dep_cancelled,
 	sum(diverted) as dep_diverted,
-	coun(dep_time) as dep_flights
+	count(dep_time) as dep_flights
 from prep_flights
 group by origin;
 
@@ -82,7 +82,7 @@ select
 	count(*) as num_unique_arr,
 	count(sched_arr_time) as arr_planned,
 	sum(cancelled) as arr_cancelled,
-	sum(dep_diverted) as arr_diverted,
+	sum(diverted) as arr_diverted,
 	count(arr_time) as arr_flights
 from prep_flights
 group by dest;
